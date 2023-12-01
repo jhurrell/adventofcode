@@ -22,9 +22,11 @@ public static class Calibrator
         // Note that we will only do this for words representing numbers 0-9. In other
         // words, we do not need to replace "sixteen" with "16" but "6".
 
-        // There's a catch. We need to properly handle the case like: "eightwothree".
-        // It must be recognized as "823".
+        // There's a catch. We need to properly handle the case like: "eightwo".
+        // It must be recognized as "82". Note that the "t" is shared by the "eight"
+        // and the "two" so we cannot do a simple .Replace().
 
+        // Create a dictionary of the key/values we can to inject into the string.
         var numbers = new Dictionary<string, string> {
             { "one",   "1"},
             { "two",   "2"},
