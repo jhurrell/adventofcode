@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v7.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v7.0": {
+      "CalorieCounting.Runner/1.0.0": {
+        "dependencies": {
+          "CalorieCounting": "1.0.0"
+        },
+        "runtime": {
+          "CalorieCounting.Runner.dll": {}
+        }
+      },
+      "CalorieCounting/1.0.0": {
+        "runtime": {
+          "CalorieCounting.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "CalorieCounting.Runner/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "CalorieCounting/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

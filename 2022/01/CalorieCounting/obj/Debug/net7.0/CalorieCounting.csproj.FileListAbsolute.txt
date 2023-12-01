@@ -1,0 +1,12 @@
+/Users/jhurrell/Development/personal/adventofcode/2022/01/CalorieCounting/obj/Debug/net7.0/CalorieCounting.csproj.AssemblyReference.cache
+/Users/jhurrell/Development/personal/adventofcode/2022/01/CalorieCounting/obj/Debug/net7.0/CalorieCounting.GeneratedMSBuildEditorConfig.editorconfig
+/Users/jhurrell/Development/personal/adventofcode/2022/01/CalorieCounting/obj/Debug/net7.0/CalorieCounting.AssemblyInfoInputs.cache
+/Users/jhurrell/Development/personal/adventofcode/2022/01/CalorieCounting/obj/Debug/net7.0/CalorieCounting.AssemblyInfo.cs
+/Users/jhurrell/Development/personal/adventofcode/2022/01/CalorieCounting/obj/Debug/net7.0/CalorieCounting.csproj.CoreCompileInputs.cache
+/Users/jhurrell/Development/personal/adventofcode/2022/01/CalorieCounting/bin/Debug/net7.0/CalorieCounting.deps.json
+/Users/jhurrell/Development/personal/adventofcode/2022/01/CalorieCounting/bin/Debug/net7.0/CalorieCounting.dll
+/Users/jhurrell/Development/personal/adventofcode/2022/01/CalorieCounting/bin/Debug/net7.0/CalorieCounting.pdb
+/Users/jhurrell/Development/personal/adventofcode/2022/01/CalorieCounting/obj/Debug/net7.0/CalorieCounting.dll
+/Users/jhurrell/Development/personal/adventofcode/2022/01/CalorieCounting/obj/Debug/net7.0/refint/CalorieCounting.dll
+/Users/jhurrell/Development/personal/adventofcode/2022/01/CalorieCounting/obj/Debug/net7.0/CalorieCounting.pdb
+/Users/jhurrell/Development/personal/adventofcode/2022/01/CalorieCounting/obj/Debug/net7.0/ref/CalorieCounting.dll
