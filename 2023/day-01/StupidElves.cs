@@ -1,3 +1,5 @@
+using System.Runtime.CompilerServices;
+
 namespace Day01;
 
 public static class StupidElves
@@ -17,6 +19,48 @@ public static class StupidElves
         return total;
     }
 
+    public static string TransformLine(string line) {
+        // Replace each instance of the WORD for a number, with the actual number.
+        // Note that we will only do this for words representing numbers 0-9. In other
+        // words, we do not need to replace "sixteen" with "16" but "6".
+
+        // There's a catch. We need to properly handle the case like: "eightwothree".
+        // It must be recognized as "823".
+
+        var numbers = new Dictionary<string, string> {
+            { "one",   "1"},
+            { "two",   "2"},
+            { "three", "3"},
+            { "four",  "4"},
+            { "five",  "5"},
+            { "six",   "6"},
+            { "seven", "7"},
+            { "eight", "8"},
+            { "nine",  "9"},
+        };
+
+        var transformedLine = string.Empty;
+        for(var i = 0; i < line.Length; i++) 
+        {
+            // Append the current character to the string we are transforming into.
+            transformedLine += line[i];
+
+            // Enumerate over all the number keys above (one, two... nine).
+            foreach(var key in numbers.Keys) 
+            {
+                // For each key (number written with letters), determine if we are
+                // at the start of that key within the string. If so, add the digit
+                // to the string.
+                if(i + key.Length <= line.Length && line.Substring(i, key.Length) == key)
+                {
+                    transformedLine += numbers[key];
+                }
+            }
+        }
+
+        return transformedLine;
+    }
+
     public static int DecodeLine(string line)
     {
         // Declare the nullable integers so we can determine later if they have been 
@@ -25,7 +69,8 @@ public static class StupidElves
         int? secondDigit = null;
 
         // Enumerate over each character from the line of text.
-        foreach(var ch in line)
+        var transformedLine = TransformLine(line);
+        foreach(var ch in transformedLine)
         {
             // Check to determine if the character is numberic...
             if(char.IsNumber(ch)) 
@@ -44,6 +89,7 @@ public static class StupidElves
 
         // Build and return the two-digit number from the individual first and second 
         // digit variables.
-        return (firstDigit!.Value * 10) + secondDigit!.Value;
+        var value = (firstDigit!.Value * 10) + secondDigit!.Value;
+        return value;
     }
 }
