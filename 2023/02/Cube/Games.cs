@@ -22,4 +22,8 @@ public class Games
 
     public int GetPossibleGamesIdSum(int red, int green, int blue) => 
         GetPossibleGames(red, green, blue).Sum(g => g.GameId);
+
+    public int GetPower() => 
+        AllGames.Sum(g => g.Power);
+
 }

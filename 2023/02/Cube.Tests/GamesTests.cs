@@ -48,4 +48,11 @@ public class GamesTests
         var games = Games.Initialize(_gamesResults);   
         Assert.Equal(8, games.GetPossibleGamesIdSum(12, 13, 14));        
     }
+
+    [Fact]
+    public void GetPower()
+    {
+        var games = Games.Initialize(_gamesResults);   
+        Assert.Equal(2286, games.GetPower());        
+    }    
 }
