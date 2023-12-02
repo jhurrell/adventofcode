@@ -1,5 +1,8 @@
 namespace Cube;
 
+// Games is a container class that stores all the games. Additionally, it
+// exposes some aggregate methods assist in testing and to actually answer
+// the questions posed in Parts 1 and 2.
 public class Games
 {
     public List<Game> AllGames { get; init; } = new();
@@ -25,5 +28,4 @@ public class Games
 
     public int GetPower() => 
         AllGames.Sum(g => g.Power);
-
 }
