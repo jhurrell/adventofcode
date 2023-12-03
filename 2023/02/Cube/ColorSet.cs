@@ -11,15 +11,24 @@ public class ColorSet
 
     public static List<ColorSet> InitializeColorSet(string colorResults)
     {
+        // We need to take something like this:
+        //  3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green
+        // and split it into something like this at each semicolon:
+        //  3 blue, 4 red
+        //  1 red, 2 green, 6 blue
+        //  2 green
         var colorSets = colorResults.Split(";");
+
+        // Once we have done that, we will loop over each element and instantiate
+        // a class for each.
         return colorSets.Select(cs => new ColorSet(cs)).ToList();
     }
 
     public ColorSet(string colorSet)
     {
-        // Break up the string. For example:
+        // We need to take something like this:
         //  1 red, 2 green, 3 blue
-        // would create an array with the elements:
+        // and split it into something like this at each comma:
         //  1 red
         //  2 green
         //  3 blue
@@ -32,7 +41,7 @@ public class ColorSet
             // array with the first element as the count and the second element 
             // as the color. For example:
             //  1 red
-            // would create an array with the elements:
+            // and split it into something like this at each space:
             //  1
             //  red
             var colorPairParts = colorPair.Trim().Split(" ");

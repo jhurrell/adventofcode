@@ -21,10 +21,10 @@ public class GameTests
     [InlineData(3, "Game 3: 8 green, 6 blue, 20 red; 5 blue, 4 red, 13 green; 5 green, 1 red")]
     [InlineData(3, "Game 4: 1 green, 3 red, 6 blue; 3 green, 6 red; 3 green, 15 blue, 14 red")]
     [InlineData(2, "Game 5: 6 red, 1 blue, 3 green; 2 blue, 1 red, 2 green")]
-    public void ColorSets_CanBeParsedFromGameResultsString(int expectedColorSetsCount, string gameResults)
+    public void ColorSets_CanBeParsedFromGameResultsString(int expected, string gameResults)
     {
         var game = new Game(gameResults);
-        Assert.Equal(expectedColorSetsCount, game.ColorSets.Count);
+        Assert.Equal(expected, game.ColorSets.Count);
     }
 
     [Theory]

@@ -3,6 +3,10 @@
 // A Game represents single record or line from the file. It will read and understand
 // a string that follows the pattern:
 // Game #: # color # color; #color, #color, #color...
+// for example:
+// Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green
+// Game 10: 6 blue, 1 green, 1 red; 17 red, 8 blue, 1 green; 4 blue, 10 red
+// Game 100: 10 red; 11 blue, 12 red; 1 green, 7 blue, 6 red
 public class Game
 {
     public int GameId { get; set; }
