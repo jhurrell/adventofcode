@@ -1,6 +1,6 @@
 namespace Rucksack.Tests;
 
-public class CompartmentsTests
+public class SackTests
 {
     [Theory]
     [InlineData("abc", "123", "abc123")]
@@ -8,7 +8,7 @@ public class CompartmentsTests
     [InlineData("jqHRNqRjqzjGDLGL", "rsFMfFZSrLrFZsSL", "jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL")]
     public void CompartmentsSplit(string expectedA, string expectedB, string contents)
     {
-        var compartments = Compartments.Initialize(contents);
+        var compartments = Sack.Initialize(contents);
         Assert.Equal(expectedA, compartments.CompartmentA);
         Assert.Equal(expectedB, compartments.CompartmentB);
     }
@@ -22,7 +22,7 @@ public class CompartmentsTests
     [InlineData('s', "CrZsJsPPZsGzwwsLwLmpwMDw")]
     public void CommonItem(char expected, string contents)
     {
-        var compartments = Compartments.Initialize(contents);
+        var compartments = Sack.Initialize(contents);
         Assert.Equal(expected, compartments.CommonItem);
     }
 
@@ -33,7 +33,7 @@ public class CompartmentsTests
     [InlineData(52, "ZZ")]
     public void Priority(int expected, string contents)
     {
-        var compartments = Compartments.Initialize(contents);
+        var compartments = Sack.Initialize(contents);
         Assert.Equal(expected, compartments.Priority);
     }
 
@@ -50,7 +50,7 @@ public class CompartmentsTests
             "CrZsJsPPZsGzwwsLwLmpwMDw",
         };
 
-        var compartments = Compartments.Initialize(contents);
+        var compartments = Sack.Initialize(contents);
         Assert.Equal(157, compartments.Sum(c => c.Priority));
     }    
 }

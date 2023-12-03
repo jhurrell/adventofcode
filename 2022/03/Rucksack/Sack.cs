@@ -1,32 +1,23 @@
 ﻿namespace Rucksack;
 
-public class Compartments
+public class Sack
 {
+    public string Items { get; init; } = string.Empty;
     public string CompartmentA { get; init; } = string.Empty;
     public string CompartmentB { get; init; } = string.Empty;
-    public Dictionary<char, int> PriorityLookup { get; init; } = new();
 
-    public static Compartments Initialize(string contents)
+    public static Sack Initialize(string contents)
     {
-        // Calculate the PriorityLookup.
-        // A = 65, Z = 90, a = 97, z = 122
-        var priorityLookup = new Dictionary<char, int> {};
-        for(var i = 0; i < 26; i++)
-        {
-            priorityLookup.Add((char)(65 + i), i + 27); // uppercase
-            priorityLookup.Add((char)(97 + i), i + 1);  // lowercase
-        }
-
         var split = contents.Length / 2;
-        return new Compartments 
+        return new Sack 
         { 
+            Items = contents,
             CompartmentA = contents.Substring(0, split),
             CompartmentB = contents.Substring(split, split),
-            PriorityLookup = priorityLookup,
         };
     }
 
-    public static List<Compartments> Initialize(List<string> contents)
+    public static List<Sack> Initialize(List<string> contents)
     {
         return contents.Select(c => Initialize(c)).ToList();
     }
@@ -46,5 +37,5 @@ public class Compartments
         }
     }
 
-    public int Priority => PriorityLookup[CommonItem];
+    public int Priority => Priorities.Lookup[CommonItem];
 }
