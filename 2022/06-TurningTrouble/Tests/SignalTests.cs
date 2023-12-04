@@ -35,7 +35,7 @@ public class SignalTests
     [InlineData(11, "zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw")]
     public void LocateMarker(int expected, string buffer)
     {
-        var position = Signal.LocateMarker(buffer);
+        var position = Signal.LocateStartOfDistinct(buffer, 4);
         Assert.Equal(expected, position);
     }
 
@@ -47,7 +47,7 @@ public class SignalTests
     [InlineData(26, "zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw")]
     public void LocateMessage(int expected, string buffer)
     {
-        var position = Signal.LocateMessage(buffer);
+        var position = Signal.LocateStartOfDistinct(buffer, 14);
         Assert.Equal(expected, position);
     }     
 }

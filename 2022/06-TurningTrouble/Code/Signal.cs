@@ -11,12 +11,12 @@ public class Signal
         return new Signal 
         { 
             Buffer = buffer,
-            MarkerPosition = LocateMarker(buffer),
-            MessagePosition = LocateMessage(buffer)
+            MarkerPosition = LocateStartOfDistinct(buffer, 4),
+            MessagePosition = LocateStartOfDistinct(buffer, 14)
         };
     }
 
-    public static int LocateMarker(string buffer, int windowSize = 4)
+    public static int LocateStartOfDistinct(string buffer, int windowSize = 4)
     {
         for(var i = 0; i < buffer.Length - 4; i++)
         {
@@ -31,22 +31,6 @@ public class Signal
 
         return 0;
     }
-
-    public static int LocateMessage(string buffer, int windowSize = 14)
-    {
-        for(var i = 0; i < buffer.Length - 4; i++)
-        {
-            var fragment = buffer.Substring(i, windowSize);
-            var areAllDifferent = AreAllCharactersDifferent(fragment);
-
-            if(fragment.Length >= 4 && areAllDifferent)
-            {
-                return i + windowSize;
-            }
-        }
-
-        return 0;
-    }    
 
     public static bool AreAllCharactersDifferent(string signal) => 
         signal.Distinct().Count() == signal.Length;
