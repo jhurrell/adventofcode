@@ -1,6 +1,6 @@
 namespace Tests;
 
-public class SectionAssignmentTests
+public class AssignmentTests
 {
     [Theory]
     [InlineData(2, 4, "2-4")]
