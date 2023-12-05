@@ -11,7 +11,7 @@ public class GardenerTests
     [InlineData(35, 13)]
     public void GetLocation(uint expected, uint seed)
     {
-        var seeds = Seeds.Initialize(Puzzle.Value);
+        var seeds = Seeds.InitializeAsDistinct(Puzzle.Value);
         var maps = Mappings.Initialize(Puzzle.Value);
         Assert.Equal(expected, Gardener.GetLocation(maps, seed));
     }
@@ -19,7 +19,7 @@ public class GardenerTests
     [Fact]
     public void GetLowestLocation()
     {
-        var seeds = Seeds.Initialize(Puzzle.Value);
+        var seeds = Seeds.InitializeAsDistinct(Puzzle.Value);
         var maps = Mappings.Initialize(Puzzle.Value);
         Assert.Equal<uint>(35, Gardener.GetLowestLocation(maps, seeds));
     }    

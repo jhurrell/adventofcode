@@ -17,11 +17,27 @@ public class Gardener
 
     public static List<uint> GetLocations(Dictionary<string, Mappings> maps, Seeds seeds)
     {
-        return seeds.Values.Select(s => Gardener.GetLocation(maps, s)).ToList();
+        return seeds.Ranges.Select(r => GetLocation(maps, r.Start)).ToList();
     }    
 
     public static uint GetLowestLocation(Dictionary<string, Mappings> maps, Seeds seeds)
     {
-        return seeds.Values.Select(s => Gardener.GetLocation(maps, s)).Min(l => l);
-    }       
+        return seeds.Ranges.Select(s => GetLocation(maps, s.Start)).Min(l => l);
+    }
+
+    public static List<SeedRange> GetOverlappingSeedRanges(Dictionary<string, Mappings> maps, Seeds seeds)
+    {
+        var overlappingRangers = new List<SeedRange>{};
+
+        var seedToSoil = maps["seed-to-soil"];
+        foreach(var map in seedToSoil.Map)
+        {
+            foreach(var range in seeds.Ranges)
+            {
+                Console.WriteLine($"{map.SourceStart} -> {map.SourceStart + map.Count}");
+            }
+        }
+
+        return overlappingRangers;
+    }
 }

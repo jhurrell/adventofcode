@@ -5,7 +5,7 @@ Console.WriteLine("Read puzzle file...");
 var puzzle = File.ReadLines("Puzzle.txt").ToArray();
 
 Console.WriteLine("Call Seeds.Initialize...");
-var seeds = Seeds.Initialize(puzzle);
+var seeds = Seeds.InitializeAsDistinct(puzzle);
 
 Console.WriteLine("Call SourceToDestination.Initialize...");
 var maps = Mappings.Initialize(puzzle);
