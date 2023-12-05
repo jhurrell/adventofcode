@@ -1,4 +1,5 @@
 using Code;
+using Range = Code.Range;
 
 namespace Tests;
 
@@ -9,18 +10,33 @@ public class GardenerTests
     [InlineData(43, 14)]
     [InlineData(86, 55)]
     [InlineData(35, 13)]
-    public void GetLocation(uint expected, uint seed)
+    public void InitializeAsDistinct(uint expected, uint seed)
     {
         var seeds = Seeds.InitializeAsDistinct(Puzzle.Value);
         var maps = Mappings.Initialize(Puzzle.Value);
-        Assert.Equal(expected, Gardener.GetLocation(maps, seed));
+        Assert.Equal(expected, Gardener.GetLocationForValue(maps, seed));
     }
 
     [Fact]
-    public void GetLowestLocation()
+    public void GetLowestLocationViaDistinct()
     {
         var seeds = Seeds.InitializeAsDistinct(Puzzle.Value);
         var maps = Mappings.Initialize(Puzzle.Value);
-        Assert.Equal<uint>(35, Gardener.GetLowestLocation(maps, seeds));
-    }    
+        Assert.Equal<uint>(35, Gardener.GetLowestLocationViaDistinct(maps, seeds));
+    }  
+
+    [Fact]
+    public void GetLowestLocationViaRanges()
+    {
+        var seeds = Seeds.InitializeAsRanges(Puzzle.Value);
+        var maps = Mappings.Initialize(Puzzle.Value);
+        Assert.Equal<uint>(46, Gardener.GetLowestLocationViaRange(maps, seeds));
+    }
+
+    [Fact]
+    public void GetLowestLocationViaRanges_ForExample()
+    {
+        var maps = Mappings.Initialize(Puzzle.Value);
+        Assert.Equal<uint>(46, Gardener.GetLowestLocationViaRange(maps, new Seeds { Ranges = new List<Range> { new  Range { Start = 82, End = 82 } }}));
+    }         
 }

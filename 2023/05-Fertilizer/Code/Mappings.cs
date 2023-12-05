@@ -4,23 +4,31 @@ public class Mappings
 {
     public string MapText { get; set; } = string.Empty;
     public string Name { get; set; } = string.Empty;
-    public List<Mapping> Map { get; set; } = new();
+    public List<Mapping> Maps { get; set; } = new();
 
-    public uint GetDestination(uint source)
+    public uint GetDestinationForValue(uint value)
     {
         // Attempt to locate the mapping that contains the source.
-        var mapping = Map
-            .Where(m => m.ContainsSource(source))
+        var destination = Maps
+            .Select(m => m.GetDestinationValue(value))
+            .Where(m => m is not null)
             .FirstOrDefault();
 
-        if(mapping is not null)
-        {
-            var offset = source - mapping.SourceStart;
-            return mapping.DestinationStart + offset;
-        }
-
-        return source;
+        return destination ?? value;
     }
+
+    public Range GetDestinationsForRange(Range testRange)
+    {
+        // Attempt to locate the mapping that contains the source.
+        var destination = Maps
+            .Select(m => m.GetDestinationRange(testRange))
+            .Where(m => m is not null)
+            .FirstOrDefault();
+
+        //Console.WriteLine($"Was it found? {destination?.Start}");            
+
+        return destination ?? testRange;
+    }    
 
     public static Mappings Initialize(string mapText)
     {
@@ -40,11 +48,7 @@ public class Mappings
 
             // Convert the components to numeric so we can work with them.
             var values = part.Split(" ");
-            mappings.Map.Add(new Mapping { 
-                SourceStart = uint.Parse(values[1]),
-                DestinationStart = uint.Parse(values[0]),
-                Count = uint.Parse(values[2])
-            });
+            mappings.Maps.Add(Mapping.Initialize(uint.Parse(values[1]), uint.Parse(values[0]), uint.Parse(values[2])));
         }
 
         return mappings;

@@ -2,7 +2,7 @@ namespace Code;
 
 public class Seeds
 {
-    public List<SeedRange> Ranges { get; set; } = new();
+    public List<Range> Ranges { get; set; } = new();
 
     public static Seeds InitializeAsDistinct(string[] puzzle)
     {
@@ -15,7 +15,7 @@ public class Seeds
                 seeds.Ranges.AddRange(line
                     .Replace("seeds: ", "")
                     .Split(" ")
-                    .Select(s => new SeedRange 
+                    .Select(s => new Range 
                     { 
                         Start = uint.Parse(s), 
                         End = uint.Parse(s) 
@@ -44,7 +44,7 @@ public class Seeds
                     var start = uint.Parse(pairs[i]);
                     var count = uint.Parse(pairs[i + 1]);
 
-                    seeds.Ranges.Add(new SeedRange { Start = start, End = start + count - 1} );
+                    seeds.Ranges.Add(new Range { Start = start, End = start + count - 1} );
                 }
 
                 return seeds;

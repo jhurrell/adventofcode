@@ -52,9 +52,9 @@ public class SourceToDestinationTests
     {
         var map = Mappings.Initialize("seed-to-soil map:|50 98 2|52 50 48");
 
-        Assert.Equal<uint>(81, map.GetDestination(79));
-        Assert.Equal<uint>(14, map.GetDestination(14));
-        Assert.Equal<uint>(57, map.GetDestination(55));
-        Assert.Equal<uint>(13, map.GetDestination(13));
+        Assert.Equal<uint>(81, map.GetDestinationForValue(79));
+        Assert.Equal<uint>(14, map.GetDestinationForValue(14));
+        Assert.Equal<uint>(57, map.GetDestinationForValue(55));
+        Assert.Equal<uint>(13, map.GetDestinationForValue(13));
     }
 }
