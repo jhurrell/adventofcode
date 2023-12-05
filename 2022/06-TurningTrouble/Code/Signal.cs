@@ -18,7 +18,7 @@ public class Signal
 
     public static int LocateStartOfDistinct(string buffer, int windowSize = 4)
     {
-        for(var i = 0; i < buffer.Length - 4; i++)
+        for(var i = 0; i < buffer.Length - windowSize; i++)
         {
             var fragment = buffer.Substring(i, windowSize);
             var areAllDifferent = AreAllCharactersDifferent(fragment);
